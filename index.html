@@ -21,8 +21,6 @@
             --dark-color: #2C3E50; /* أزرق داكن/فحمي */
             --light-color: #F0F2F5; /* رمادي فاتح جداً/أوف وايت */
             --accent-color: #FFC300; /* أصفر ذهبي دافئ */
-            --success-color: #28a745;
-            --error-color: #dc3545;
         }
         
         body {
@@ -131,8 +129,6 @@
             box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08);
             transition: transform 0.3s ease, box-shadow 0.3s ease;
             position: relative;
-            display: flex; /* لترتيب الصورة والتفاصيل */
-            flex-direction: column;
         }
         
         .menu-item:hover {
@@ -148,9 +144,6 @@
         
         .item-details {
             padding: 15px;
-            flex-grow: 1; /* عشان ياخذ المساحة المتاحة */
-            display: flex;
-            flex-direction: column;
         }
         
         .item-name {
@@ -171,7 +164,6 @@
             color: #666;
             font-size: 0.9rem;
             margin-bottom: 15px;
-            flex-grow: 1; /* عشان الوصف ياخذ المساحة ويخلي الزر بالأسفل */
         }
         
         .add-to-cart {
@@ -184,7 +176,6 @@
             transition: background-color 0.3s;
             width: 100%;
             font-weight: bold;
-            margin-top: auto; /* يدفع الزر للأسفل */
         }
         
         .add-to-cart:hover {
@@ -303,13 +294,11 @@
             align-items: center;
             padding: 12px 0;
             border-bottom: 1px solid #eee;
-            flex-wrap: wrap; /* للسماح بالالتفاف في الشاشات الصغيرة */
         }
-
+        
         .cart-item-info {
             flex: 1;
             margin-left: 10px;
-            min-width: 150px; /* لتجنب انكماش كبير */
         }
         
         .cart-item-name {
@@ -321,18 +310,10 @@
             color: var(--primary-color);
             font-size: 0.9rem;
         }
-
-        .cart-item-options {
-            font-size: 0.8rem;
-            color: #666;
-            margin-top: 5px;
-        }
         
         .cart-item-quantity {
             display: flex;
             align-items: center;
-            margin-top: 10px; /* مسافة بين المعلومات والكمية في الشاشات الصغيرة */
-            margin-right: 10px; /* مسافة من اليمين */
         }
         
         .quantity-btn {
@@ -364,10 +345,9 @@
             background: none;
             border: none;
             cursor: pointer;
-            margin-right: 0; /* مسافة من اليمين للزر نفسه */
+            margin-right: 10px;
             font-size: 1.2rem;
             transition: color 0.3s;
-            margin-top: 10px; /* مسافة من الأعلى في الشاشات الصغيرة */
         }
         
         .remove-item:hover {
@@ -379,18 +359,12 @@
             padding-top: 15px;
         }
         
-        .cart-summary-row {
+        .cart-total {
             display: flex;
             justify-content: space-between;
-            font-size: 1rem;
-            margin-bottom: 10px;
-        }
-
-        .cart-summary-row.total {
             font-weight: bold;
             font-size: 1.2rem;
-            margin-top: 10px;
-            color: var(--dark-color);
+            margin-bottom: 20px;
         }
         
         .checkout-btn {
@@ -475,129 +449,16 @@
         }
         
         /* قسم التأكيد */
-        .confirmation-modal {
-            display: none; /* Hidden by default */
-            position: fixed; /* Stay in place */
-            z-index: 2000; /* Sit on top */
-            left: 0;
-            top: 0;
-            width: 100%; /* Full width */
-            height: 100%; /* Full height */
-            overflow: auto; /* Enable scroll if needed */
-            background-color: rgba(0,0,0,0.6); /* Black w/ opacity */
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            opacity: 0;
-            transition: opacity 0.3s ease-in-out;
+        .confirmation {
+            display: none;
+            background-color: #d4edda;
+            color: #155724;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 40px;
+            text-align: center;
         }
         
-        .confirmation-modal.active {
-            opacity: 1;
-        }
-
-        .confirmation-content {
-            background-color: #fefefe;
-            margin: auto;
-            padding: 30px;
-            border-radius: 12px;
-            width: 90%;
-            max-width: 500px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
-            text-align: center;
-            position: relative;
-            transform: translateY(20px);
-            transition: transform 0.3s ease-in-out;
-        }
-
-        .confirmation-modal.active .confirmation-content {
-            transform: translateY(0);
-        }
-
-        .confirmation-content h3 {
-            color: var(--success-color);
-            margin-bottom: 10px;
-            font-size: 1.8rem;
-        }
-
-        .confirmation-content p {
-            font-size: 1.1rem;
-            color: #555;
-            margin-bottom: 20px;
-        }
-
-        .confirmation-content .close-modal {
-            position: absolute;
-            top: 15px;
-            right: 20px;
-            color: #aaa;
-            font-size: 30px;
-            font-weight: bold;
-            cursor: pointer;
-            transition: color 0.3s;
-        }
-
-        .confirmation-content .close-modal:hover,
-        .confirmation-content .close-modal:focus {
-            color: var(--dark-color);
-            text-decoration: none;
-            cursor: pointer;
-        }
-
-        .order-details-summary {
-            text-align: right;
-            margin-top: 20px;
-            border-top: 1px dashed #ddd;
-            padding-top: 15px;
-            max-height: 200px;
-            overflow-y: auto;
-            background-color: #f9f9f9;
-            padding: 10px;
-            border-radius: 8px;
-        }
-
-        .order-details-summary h4 {
-            color: var(--dark-color);
-            margin-bottom: 10px;
-            font-size: 1.2rem;
-        }
-
-        .order-details-summary ul {
-            list-style: none;
-            padding: 0;
-            margin: 0;
-        }
-
-        .order-details-summary ul li {
-            margin-bottom: 5px;
-            font-size: 0.95rem;
-            color: #666;
-            display: flex;
-            justify-content: space-between;
-            align-items: baseline;
-        }
-        .order-details-summary ul li strong {
-            color: var(--dark-color);
-        }
-
-        .order-details-summary ul li span {
-            color: var(--primary-color);
-            font-weight: bold;
-            margin-left: 10px;
-            white-space: nowrap; /* يمنع التفاف السعر */
-        }
-
-        .order-details-summary .total-price-summary {
-            font-weight: bold;
-            font-size: 1.3rem;
-            color: var(--primary-color);
-            margin-top: 15px;
-            text-align: center;
-            padding-top: 10px;
-            border-top: 1px solid #eee;
-        }
-
-
         /* التصميم المتجاوب */
         @media (max-width: 992px) {
             .menu-container {
@@ -644,24 +505,6 @@
                 bottom: 20px;
                 left: 20px;
             }
-
-            .cart-item-quantity {
-                margin-right: 0; /* إزالة المسافة في الشاشات الصغيرة */
-                margin-top: 5px; /* تقليل المسافة */
-            }
-            .remove-item {
-                margin-top: 5px; /* تقليل المسافة */
-            }
-            .cart-item {
-                flex-direction: column; /* لتجميع العناصر عمودياً */
-                align-items: flex-end; /* لمحاذاة العناصر لليمين */
-                padding-bottom: 15px; /* مسافة إضافية بين العناصر */
-            }
-            .cart-item-info {
-                width: 100%; /* لعرض المعلومات على سطر كامل */
-                text-align: right; /* لمحاذاة النص لليمين */
-                margin-left: 0;
-            }
         }
         
         @media (max-width: 480px) {
@@ -672,9 +515,6 @@
             .container {
                 width: 100%;
                 padding: 10px;
-            }
-            .confirmation-content {
-                padding: 20px;
             }
         }
         
@@ -733,168 +573,12 @@
             animation: fadeIn 0.3s ease-out;
         }
         
-        .notification.success { background-color: var(--success-color); }
-        .notification.error { background-color: var(--error-color); }
-
         .notification i {
             margin-left: 8px;
         }
         
         @keyframes fadeOut {
             to { opacity: 0; }
-        }
-
-        /* نافذة إضافة طبق للسلة */
-        .item-modal {
-            display: none;
-            position: fixed;
-            z-index: 1500;
-            left: 0;
-            top: 0;
-            width: 100%;
-            height: 100%;
-            overflow: auto;
-            background-color: rgba(0,0,0,0.4);
-            align-items: center;
-            justify-content: center;
-            opacity: 0;
-            transition: opacity 0.3s ease-in-out;
-        }
-
-        .item-modal.active {
-            display: flex;
-            opacity: 1;
-        }
-
-        .modal-content {
-            background-color: #fefefe;
-            padding: 25px;
-            border-radius: 10px;
-            width: 90%;
-            max-width: 450px;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
-            position: relative;
-            transform: translateY(20px);
-            transition: transform 0.3s ease-in-out;
-        }
-
-        .item-modal.active .modal-content {
-            transform: translateY(0);
-        }
-
-        .modal-content .close-modal {
-            position: absolute;
-            top: 10px;
-            right: 15px;
-            color: #aaa;
-            font-size: 28px;
-            font-weight: bold;
-            cursor: pointer;
-        }
-
-        .modal-content .close-modal:hover {
-            color: var(--dark-color);
-        }
-
-        .modal-content h3 {
-            margin-top: 0;
-            color: var(--dark-color);
-            font-size: 1.5rem;
-            border-bottom: 1px solid #eee;
-            padding-bottom: 10px;
-            margin-bottom: 20px;
-        }
-
-        .modal-item-info {
-            display: flex;
-            align-items: center;
-            margin-bottom: 20px;
-        }
-        .modal-item-info img {
-            width: 80px;
-            height: 80px;
-            object-fit: cover;
-            border-radius: 8px;
-            margin-left: 15px;
-        }
-        .modal-item-text {
-            flex-grow: 1;
-        }
-        .modal-item-text .name {
-            font-weight: bold;
-            font-size: 1.2rem;
-            color: var(--dark-color);
-        }
-        .modal-item-text .price {
-            color: var(--primary-color);
-            font-weight: bold;
-            font-size: 1.1rem;
-            margin-top: 5px;
-        }
-
-        .modal-options .form-group {
-            margin-bottom: 15px;
-        }
-
-        .modal-options label {
-            font-weight: 600;
-            color: var(--dark-color);
-            margin-bottom: 5px;
-        }
-
-        .modal-options input[type="text"],
-        .modal-options textarea {
-            width: 100%;
-            padding: 10px;
-            border: 1px solid #ddd;
-            border-radius: 5px;
-            font-size: 0.95rem;
-        }
-
-        .modal-actions {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            margin-top: 20px;
-            border-top: 1px solid #eee;
-            padding-top: 15px;
-        }
-
-        .modal-quantity {
-            display: flex;
-            align-items: center;
-        }
-
-        .modal-quantity .quantity-btn {
-            background-color: var(--light-color);
-            border: 1px solid #ddd;
-            width: 35px;
-            height: 35px;
-            font-size: 1.2rem;
-            border-radius: 5px;
-        }
-        .modal-quantity .quantity-btn:hover {
-            background-color: #eee;
-        }
-
-        .modal-quantity .quantity {
-            font-size: 1.1rem;
-            font-weight: bold;
-        }
-
-        .modal-add-to-cart {
-            background-color: var(--primary-color);
-            color: white;
-            border: none;
-            padding: 10px 20px;
-            border-radius: 8px;
-            cursor: pointer;
-            font-size: 1rem;
-            font-weight: bold;
-            transition: background-color 0.3s;
-        }
-        .modal-add-to-cart:hover {
-            background-color: #8C3D26;
         }
     </style>
 </head>
@@ -927,34 +611,34 @@
                 <div class="menu-section" id="appetizers">
                     <h3 class="category-title">المقبلات</h3>
                     
-                    <div class="menu-item" data-category="appetizers" data-id="1" data-name="سلطة الخضار الطازجة" data-price="15" data-image="https://images.unsplash.com/photo-1546069901-ba9599a7e63c?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" data-description="خضار طازجة مع صلصة خاصة وزيت زيتون">
+                    <div class="menu-item" data-category="appetizers">
                         <span class="badge">الأكثر طلباً</span>
                         <img src="https://images.unsplash.com/photo-1546069901-ba9599a7e63c?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="سلطة الخضار" class="item-image">
                         <div class="item-details">
                             <div class="item-name">سلطة الخضار الطازجة</div>
                             <div class="item-price">15 د.ع</div>
                             <p class="item-description">خضار طازجة مع صلصة خاصة وزيت زيتون</p>
-                            <button class="add-to-cart">إضافة للسلة</button>
+                            <button class="add-to-cart" data-id="1" data-name="سلطة الخضار الطازجة" data-price="15">إضافة للسلة</button>
                         </div>
                     </div>
                     
-                    <div class="menu-item" data-category="appetizers" data-id="2" data-name="حساء الخضار" data-price="12" data-image="https://images.unsplash.com/photo-1473093295043-cdd812d0e601?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" data-description="حساء ساخن مع خضار موسمية وأعشاب طازجة">
+                    <div class="menu-item" data-category="appetizers">
                         <img src="https://images.unsplash.com/photo-1473093295043-cdd812d0e601?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="حساء الخضار" class="item-image">
                         <div class="item-details">
                             <div class="item-name">حساء الخضار</div>
                             <div class="item-price">12 د.ع</div>
                             <p class="item-description">حساء ساخن مع خضار موسمية وأعشاب طازجة</p>
-                            <button class="add-to-cart">إضافة للسلة</button>
+                            <button class="add-to-cart" data-id="2" data-name="حساء الخضار" data-price="12">إضافة للسلة</button>
                         </div>
                     </div>
                     
-                    <div class="menu-item" data-category="appetizers" data-id="3" data-name="باستا بالثوم" data-price="18" data-image="https://images.unsplash.com/photo-1601050690597-df0568f70950?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" data-description="باستا مع صلصة ثوم وزيت زيتون وأعشاب">
-                        <img src="https://images.unsplash.com/photo-1601050690597-df0568f70950?ixlib=rb-1.2.1&auto=format&fit=" alt="باستا" class="item-image">
+                    <div class="menu-item" data-category="appetizers">
+                        <img src="https://images.unsplash.com/photo-1601050690597-df0568f70950?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="باستا" class="item-image">
                         <div class="item-details">
                             <div class="item-name">باستا بالثوم</div>
                             <div class="item-price">18 د.ع</div>
                             <p class="item-description">باستا مع صلصة ثوم وزيت زيتون وأعشاب</p>
-                            <button class="add-to-cart">إضافة للسلة</button>
+                            <button class="add-to-cart" data-id="3" data-name="باستا بالثوم" data-price="18">إضافة للسلة</button>
                         </div>
                     </div>
                 </div>
@@ -962,34 +646,34 @@
                 <div class="menu-section" id="main">
                     <h3 class="category-title">الأطباق الرئيسية</h3>
                     
-                    <div class="menu-item" data-category="main" data-id="4" data-name="ستيك لحم مشوي" data-price="55" data-image="https://images.unsplash.com/photo-1558030006-450675393462?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" data-description="لحم بقري مشوي مع صلصة الفطر والبطاطس">
+                    <div class="menu-item" data-category="main">
                         <span class="badge">جديد</span>
                         <img src="https://images.unsplash.com/photo-1558030006-450675393462?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="ستيك لحم" class="item-image">
                         <div class="item-details">
                             <div class="item-name">ستيك لحم مشوي</div>
                             <div class="item-price">55 د.ع</div>
                             <p class="item-description">لحم بقري مشوي مع صلصة الفطر والبطاطس</p>
-                            <button class="add-to-cart">إضافة للسلة</button>
+                            <button class="add-to-cart" data-id="4" data-name="ستيك لحم مشوي" data-price="55">إضافة للسلة</button>
                         </div>
                     </div>
                     
-                    <div class="menu-item" data-category="main" data-id="5" data-name="دجاج مشوي" data-price="35" data-image="https://images.unsplash.com/photo-1532550907401-a500c9a57435?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" data-description="دجاج مشوي مع أرز بخاري وخضار سوتيه">
+                    <div class="menu-item" data-category="main">
                         <img src="https://images.unsplash.com/photo-1532550907401-a500c9a57435?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="دجاج مشوي" class="item-image">
                         <div class="item-details">
                             <div class="item-name">دجاج مشوي</div>
                             <div class="item-price">35 د.ع</div>
                             <p class="item-description">دجاج مشوي مع أرز بخاري وخضار سوتيه</p>
-                            <button class="add-to-cart">إضافة للسلة</button>
+                            <button class="add-to-cart" data-id="5" data-name="دجاج مشوي" data-price="35">إضافة للسلة</button>
                         </div>
                     </div>
                     
-                    <div class="menu-item" data-category="main" data-id="6" data-name="سمك مشوي" data-price="45" data-image="https://images.unsplash.com/photo-1432139555190-58524dae6a55?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" data-description="سمك طازج مشوي مع صلصة الليمون والثوم">
+                    <div class="menu-item" data-category="main">
                         <img src="https://images.unsplash.com/photo-1432139555190-58524dae6a55?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="سمك مشوي" class="item-image">
                         <div class="item-details">
                             <div class="item-name">سمك مشوي</div>
                             <div class="item-price">45 د.ع</div>
                             <p class="item-description">سمك طازج مشوي مع صلصة الليمون والثوم</p>
-                            <button class="add-to-cart">إضافة للسلة</button>
+                            <button class="add-to-cart" data-id="6" data-name="سمك مشوي" data-price="45">إضافة للسلة</button>
                         </div>
                     </div>
                 </div>
@@ -997,34 +681,34 @@
                 <div class="menu-section" id="drinks">
                     <h3 class="category-title">المشروبات</h3>
                     
-                    <div class="menu-item" data-category="drinks" data-id="7" data-name="عصير برتقال طازج" data-price="12" data-image="https://images.unsplash.com/photo-1551024506-0bccd828d307?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" data-description="عصير برتقال طازج مع قطع البرتقال">
+                    <div class="menu-item" data-category="drinks">
                         <img src="https://images.unsplash.com/photo-1551024506-0bccd828d307?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="عصير برتقال" class="item-image">
                         <div class="item-details">
                             <div class="item-name">عصير برتقال طازج</div>
                             <div class="item-price">12 د.ع</div>
                             <p class="item-description">عصير برتقال طازج مع قطع البرتقال</p>
-                            <button class="add-to-cart">إضافة للسلة</button>
+                            <button class="add-to-cart" data-id="7" data-name="عصير برتقال طازج" data-price="12">إضافة للسلة</button>
                         </div>
                     </div>
                     
-                    <div class="menu-item" data-category="drinks" data-id="8" data-name="ليمون بالنعناع" data-price="10" data-image="https://images.unsplash.com/photo-1600271886742-f049cd5bba08?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" data-description="مشروب منعش من الليمون والنعناع الطازج">
+                    <div class="menu-item" data-category="drinks">
                         <span class="badge">صحي</span>
                         <img src="https://images.unsplash.com/photo-1600271886742-f049cd5bba08?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="ليمون نعناع" class="item-image">
                         <div class="item-details">
                             <div class="item-name">ليمون بالنعناع</div>
                             <div class="item-price">10 د.ع</div>
                             <p class="item-description">مشروب منعش من الليمون والنعناع الطازج</p>
-                            <button class="add-to-cart">إضافة للسلة</button>
+                            <button class="add-to-cart" data-id="8" data-name="ليمون بالنعناع" data-price="10">إضافة للسلة</button>
                         </div>
                     </div>
                     
-                    <div class="menu-item" data-category="drinks" data-id="9" data-name="قهوة عربية" data-price="8" data-image="https://images.unsplash.com/photo-1513558161293-cdaf765ed2fd?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" data-description="قهوة عربية أصيلة مع هيل">
+                    <div class="menu-item" data-category="drinks">
                         <img src="https://images.unsplash.com/photo-1513558161293-cdaf765ed2fd?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="قهوة" class="item-image">
                         <div class="item-details">
                             <div class="item-name">قهوة عربية</div>
                             <div class="item-price">8 د.ع</div>
                             <p class="item-description">قهوة عربية أصيلة مع هيل</p>
-                            <button class="add-to-cart">إضافة للسلة</button>
+                            <button class="add-to-cart" data-id="9" data-name="قهوة عربية" data-price="8">إضافة للسلة</button>
                         </div>
                     </div>
                 </div>
@@ -1032,24 +716,24 @@
                 <div class="menu-section" id="desserts">
                     <h3 class="category-title">الحلويات</h3>
                     
-                    <div class="menu-item" data-category="desserts" data-id="10" data-name="تشيز كيك" data-price="20" data-image="https://images.unsplash.com/photo-1563805042-7684c019e1cb?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" data-description="تشيز كيك كلاسيكي مع طبقة توت">
+                    <div class="menu-item" data-category="desserts">
                         <img src="https://images.unsplash.com/photo-1563805042-7684c019e1cb?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="تشيز كيك" class="item-image">
                         <div class="item-details">
                             <div class="item-name">تشيز كيك</div>
                             <div class="item-price">20 د.ع</div>
                             <p class="item-description">تشيز كيك كلاسيكي مع طبقة توت</p>
-                            <button class="add-to-cart">إضافة للسلة</button>
+                            <button class="add-to-cart" data-id="10" data-name="تشيز كيك" data-price="20">إضافة للسلة</button>
                         </div>
                     </div>
                     
-                    <div class="menu-item" data-category="desserts" data-id="11" data-name="آيس كريم" data-price="15" data-image="https://images.unsplash.com/photo-1497034825429-c343d7c6a68f?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" data-description="3 أصناف من الآيس كريم مع صوص الشوكولاتة">
+                    <div class="menu-item" data-category="desserts">
                         <span class="badge">شهي</span>
                         <img src="https://images.unsplash.com/photo-1497034825429-c343d7c6a68f?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="آيس كريم" class="item-image">
                         <div class="item-details">
                             <div class="item-name">آيس كريم</div>
                             <div class="item-price">15 د.ع</div>
                             <p class="item-description">3 أصناف من الآيس كريم مع صوص الشوكولاتة</p>
-                            <button class="add-to-cart">إضافة للسلة</button>
+                            <button class="add-to-cart" data-id="11" data-name="آيس كريم" data-price="15">إضافة للسلة</button>
                         </div>
                     </div>
                 </div>
@@ -1102,7 +786,11 @@
                 <button type="submit" class="submit-btn">تأكيد الحجز <i class="fas fa-calendar-check"></i></button>
             </form>
             
+            <div class="confirmation" id="reservation-confirmation">
+                <h3>تم تأكيد حجزك بنجاح!</h3>
+                <p>شكراً لك على حجز طاولة في مطعمنا. سنتواصل معك قريباً لتأكيد التفاصيل.</p>
             </div>
+        </div>
     </div>
     
     <div class="cart-container">
@@ -1123,16 +811,8 @@
         </div>
         
         <div class="cart-footer">
-            <div class="cart-summary-row">
-                <span>المجموع الفرعي:</span>
-                <span id="cart-subtotal">0</span> د.ع
-            </div>
-            <div class="cart-summary-row">
-                <span>رسوم التوصيل:</span>
-                <span id="delivery-fee">0</span> د.ع <span style="font-size: 0.8em; color: #999;">(تحدد لاحقاً)</span>
-            </div>
-            <div class="cart-summary-row total">
-                <span>المجموع الكلي:</span>
+            <div class="cart-total">
+                <span>المجموع:</span>
                 <span id="cart-total">0</span> د.ع
             </div>
             
@@ -1142,63 +822,9 @@
         </div>
     </div>
     
-    <div class="confirmation-modal" id="order-confirmation-modal">
-        <div class="confirmation-content">
-            <span class="close-modal" data-modal="order-confirmation-modal">&times;</span>
-            <i class="fas fa-check-circle" style="font-size: 3em; color: var(--success-color); margin-bottom: 15px;"></i>
-            <h3>تم تأكيد طلبك بنجاح!</h3>
-            <p>شكراً لك على طلبك. سيتم إعداد طلبك قريباً والتواصل معك.</p>
-            <div class="order-details-summary">
-                <h4>ملخص طلبك:</h4>
-                <ul id="order-summary-list">
-                    </ul>
-                <div class="total-price-summary" id="order-summary-total">المجموع الكلي: 0 د.ع</div>
-            </div>
-        </div>
-    </div>
-
-    <div class="confirmation-modal" id="reservation-confirmation-modal">
-        <div class="confirmation-content">
-            <span class="close-modal" data-modal="reservation-confirmation-modal">&times;</span>
-            <i class="fas fa-calendar-check" style="font-size: 3em; color: var(--success-color); margin-bottom: 15px;"></i>
-            <h3>تم تأكيد حجزك بنجاح!</h3>
-            <p>شكراً لك على حجز طاولة في مطعمنا. سنتواصل معك قريباً لتأكيد التفاصيل.</p>
-            <div class="order-details-summary">
-                <h4>تفاصيل حجزك:</h4>
-                <ul id="reservation-summary-list">
-                    </ul>
-            </div>
-        </div>
-    </div>
-
-    <div class="item-modal" id="item-details-modal">
-        <div class="modal-content">
-            <span class="close-modal" data-modal="item-details-modal">&times;</span>
-            <h3>تفاصيل الطبق</h3>
-            <div class="modal-item-info">
-                <img src="" alt="صورة الطبق" id="modal-item-image">
-                <div class="modal-item-text">
-                    <div class="name" id="modal-item-name">اسم الطبق</div>
-                    <div class="price" id="modal-item-price">0 د.ع</div>
-                </div>
-            </div>
-            <div class="modal-options">
-                <div class="form-group" id="modal-options-container">
-                    </div>
-                <div class="form-group">
-                    <label for="modal-item-notes">ملاحظات خاصة على الطبق (اختياري)</label>
-                    <textarea id="modal-item-notes" rows="2" placeholder="مثال: بدون بصل، حار جداً"></textarea>
-                </div>
-            </div>
-            <div class="modal-actions">
-                <div class="modal-quantity">
-                    <button class="quantity-btn" id="modal-qty-minus">-</button>
-                    <span class="quantity" id="modal-item-quantity">1</span>
-                    <button class="quantity-btn" id="modal-qty-plus">+</button>
-                </div>
-                <button class="modal-add-to-cart" id="modal-add-to-cart-btn">أضف إلى السلة</button>
-            </div>
-        </div>
+    <div class="confirmation" id="order-confirmation">
+        <h3>تم تأكيد طلبك بنجاح!</h3>
+        <p>شكراً لك على طلبك. سيتم إعداد طلبك قريباً.</p>
     </div>
     
     <a href="#" class="back-to-top" id="back-to-top">
@@ -1208,79 +834,45 @@
     <script>
         // متغيرات سلة التسوق
         let cart = JSON.parse(localStorage.getItem('cart')) || [];
-        const DELIVERY_FEE = 5; // رسوم توصيل افتراضية (بالدينار العراقي)، تُعدل من لوحة التحكم لاحقًا
-
+        let cartTotal = 0;
+        
         // عناصر DOM
         const cartButton = document.getElementById('cart-button');
         const closeCartButton = document.getElementById('close-cart');
         const cartSidebar = document.getElementById('cart-sidebar');
         const cartItemsContainer = document.getElementById('cart-items');
         const cartCountElement = document.getElementById('cart-count');
-        const cartSubtotalElement = document.getElementById('cart-subtotal');
-        const deliveryFeeElement = document.getElementById('delivery-fee');
         const cartTotalElement = document.getElementById('cart-total');
-        const addToCartButtons = document.querySelectorAll('.menu-item .add-to-cart'); // زر "إضافة للسلة" الرئيسي
+        const addToCartButtons = document.querySelectorAll('.add-to-cart');
         const checkoutButton = document.getElementById('checkout-btn');
         const bookingForm = document.getElementById('booking-form');
-        const orderConfirmationModal = document.getElementById('order-confirmation-modal');
-        const reservationConfirmationModal = document.getElementById('reservation-confirmation-modal');
+        const reservationConfirmation = document.getElementById('reservation-confirmation');
+        const orderConfirmation = document.getElementById('order-confirmation');
         const backToTopButton = document.getElementById('back-to-top');
         const categoryButtons = document.querySelectorAll('.category-btn');
         const menuSections = document.querySelectorAll('.menu-section');
-        const closeModals = document.querySelectorAll('.close-modal');
-
-        // عناصر مودال تفاصيل الطبق
-        const itemDetailsModal = document.getElementById('item-details-modal');
-        const modalItemImage = document.getElementById('modal-item-image');
-        const modalItemName = document.getElementById('modal-item-name');
-        const modalItemPrice = document.getElementById('modal-item-price');
-        const modalItemNotes = document.getElementById('modal-item-notes');
-        const modalItemQuantity = document.getElementById('modal-item-quantity');
-        const modalQtyMinus = document.getElementById('modal-qty-minus');
-        const modalQtyPlus = document.getElementById('modal-qty-plus');
-        const modalAddToCartBtn = document.getElementById('modal-add-to-cart-btn');
-
-        let currentSelectedItem = null; // لتخزين بيانات الطبق المحدد في المودال
-
+        
         // تحديث السلة عند التحميل
         updateCart();
-
+        
         // فتح/إغلاق سلة التسوق
         cartButton.addEventListener('click', () => {
             cartSidebar.classList.add('active');
         });
-
+        
         closeCartButton.addEventListener('click', () => {
             cartSidebar.classList.remove('active');
         });
-
-        // إغلاق أي مودال عند النقر على زر الإغلاق
-        closeModals.forEach(button => {
-            button.addEventListener('click', (event) => {
-                const modalId = event.target.getAttribute('data-modal');
-                document.getElementById(modalId).classList.remove('active');
-            });
-        });
-
-        // إغلاق المودال عند النقر خارج المحتوى
-        window.addEventListener('click', (event) => {
-            if (event.target.classList.contains('confirmation-modal')) {
-                event.target.classList.remove('active');
-            }
-            if (event.target.classList.contains('item-modal')) {
-                event.target.classList.remove('active');
-            }
-        });
-
+        
         // تصفية العناصر حسب التصنيف
         categoryButtons.forEach(button => {
             button.addEventListener('click', () => {
                 const category = button.getAttribute('data-category');
-
+                
                 // تحديث الأزرار النشطة
                 categoryButtons.forEach(btn => btn.classList.remove('active'));
                 button.classList.add('active');
-
+                
                 // إظهار/إخفاء العناصر حسب التصنيف
                 if (category === 'all') {
                     menuSections.forEach(section => section.style.display = 'grid');
@@ -1293,7 +885,7 @@
                         }
                     });
                 }
-
+                
                 // التمرير إلى القسم المحدد
                 if (category !== 'all') {
                     document.getElementById(category).scrollIntoView({
@@ -1307,158 +899,118 @@
                 }
             });
         });
-
-        // فتح مودال تفاصيل الطبق عند النقر على زر "إضافة للسلة"
+        
+        // إضافة عنصر للسلة
         addToCartButtons.forEach(button => {
-            button.addEventListener('click', (event) => {
-                const menuItem = event.target.closest('.menu-item');
-                currentSelectedItem = {
-                    id: menuItem.getAttribute('data-id'),
-                    name: menuItem.getAttribute('data-name'),
-                    price: parseFloat(menuItem.getAttribute('data-price')),
-                    image: menuItem.getAttribute('data-image'),
-                    description: menuItem.getAttribute('data-description'),
-                    quantity: 1, // الكمية الافتراضية عند الفتح
-                    notes: '' // ملاحظات افتراضية فارغة
-                };
-
-                modalItemImage.src = currentSelectedItem.image;
-                modalItemName.textContent = currentSelectedItem.name;
-                modalItemPrice.textContent = `${currentSelectedItem.price.toFixed(2)} د.ع`;
-                modalItemQuantity.textContent = currentSelectedItem.quantity;
-                modalItemNotes.value = ''; // مسح أي ملاحظات سابقة
-
-                itemDetailsModal.classList.add('active');
+            button.addEventListener('click', () => {
+                const id = button.getAttribute('data-id');
+                const name = button.getAttribute('data-name');
+                const price = parseFloat(button.getAttribute('data-price'));
+                
+                // التحقق إذا كان العنصر موجوداً بالفعل في السلة
+                const existingItem = cart.find(item => item.id === id);
+                
+                if (existingItem) {
+                    existingItem.quantity += 1;
+                } else {
+                    cart.push({
+                        id,
+                        name,
+                        price,
+                        quantity: 1
+                    });
+                }
+                
+                updateCart();
+                showCartNotification(name);
+                
+                // حفظ السلة في localStorage
+                localStorage.setItem('cart', JSON.stringify(cart));
             });
         });
-
-        // زيادة/تقليل الكمية في مودال تفاصيل الطبق
-        modalQtyMinus.addEventListener('click', () => {
-            if (currentSelectedItem.quantity > 1) {
-                currentSelectedItem.quantity--;
-                modalItemQuantity.textContent = currentSelectedItem.quantity;
-            }
-        });
-
-        modalQtyPlus.addEventListener('click', () => {
-            currentSelectedItem.quantity++;
-            modalItemQuantity.textContent = currentSelectedItem.quantity;
-        });
-
-        // إضافة الطبق من المودال إلى السلة
-        modalAddToCartBtn.addEventListener('click', () => {
-            currentSelectedItem.notes = modalItemNotes.value.trim(); // حفظ الملاحظات
-
-            const existingItemIndex = cart.findIndex(item => 
-                item.id === currentSelectedItem.id && item.notes === currentSelectedItem.notes
-            );
-
-            if (existingItemIndex !== -1) {
-                cart[existingItemIndex].quantity += currentSelectedItem.quantity;
-            } else {
-                cart.push({ ...currentSelectedItem }); // إضافة نسخة من العنصر المحدد
-            }
-
-            updateCart();
-            showCartNotification(currentSelectedItem.name);
-            localStorage.setItem('cart', JSON.stringify(cart));
-            itemDetailsModal.classList.remove('active'); // إغلاق المودال
-        });
-
+        
         // تحديث السلة
         function updateCart() {
             cartItemsContainer.innerHTML = '';
-            let subtotal = 0;
-
+            cartTotal = 0;
+            
             if (cart.length === 0) {
                 cartItemsContainer.innerHTML = '<p style="text-align: center; margin-top: 50px; color: #777;">السلة فارغة</p>';
             } else {
                 cart.forEach(item => {
-                    subtotal += item.price * item.quantity;
-
+                    cartTotal += item.price * item.quantity;
+                    
                     const cartItemElement = document.createElement('div');
                     cartItemElement.className = 'cart-item';
                     cartItemElement.innerHTML = `
                         <div class="cart-item-info">
                             <div class="cart-item-name">${item.name}</div>
-                            <div class="cart-item-price">${item.price.toFixed(2)} د.ع</div>
-                            ${item.notes ? `<div class="cart-item-options">ملاحظات: ${item.notes}</div>` : ''}
+                            <div class="cart-item-price">${item.price} د.ع</div>
                         </div>
                         <div class="cart-item-quantity">
-                            <button class="quantity-btn minus" data-id="${item.id}" data-notes="${item.notes}">-</button>
+                            <button class="quantity-btn minus" data-id="${item.id}">-</button>
                             <span class="quantity">${item.quantity}</span>
-                            <button class="quantity-btn plus" data-id="${item.id}" data-notes="${item.notes}">+</button>
+                            <button class="quantity-btn plus" data-id="${item.id}">+</button>
                         </div>
-                        <button class="remove-item" data-id="${item.id}" data-notes="${item.notes}">×</button>
+                        <button class="remove-item" data-id="${item.id}">×</button>
                     `;
-
+                    
                     cartItemsContainer.appendChild(cartItemElement);
                 });
             }
-
+            
             // تحديث العدد والمجموع
-            const totalItemsInCart = cart.reduce((total, item) => total + item.quantity, 0);
-            cartCountElement.textContent = totalItemsInCart;
-            cartSubtotalElement.textContent = subtotal.toFixed(2);
-            deliveryFeeElement.textContent = DELIVERY_FEE.toFixed(2);
-            cartTotalElement.textContent = (subtotal + DELIVERY_FEE).toFixed(2);
-
-
-            // إضافة أحداث للأزرار الجديدة (زيادة/تقليل/حذف)
+            cartCountElement.textContent = cart.reduce((total, item) => total + item.quantity, 0);
+            cartTotalElement.textContent = cartTotal.toFixed(2);
+            
+            // إضافة أحداث للأزرار الجديدة
             document.querySelectorAll('.minus').forEach(button => {
                 button.addEventListener('click', () => {
                     const id = button.getAttribute('data-id');
-                    const notes = button.getAttribute('data-notes');
-                    const itemIndex = cart.findIndex(item => item.id === id && item.notes === notes);
-
-                    if (itemIndex !== -1) {
-                        if (cart[itemIndex].quantity > 1) {
-                            cart[itemIndex].quantity -= 1;
-                        } else {
-                            cart.splice(itemIndex, 1); // حذف العنصر إذا كانت الكمية 1
-                        }
+                    const item = cart.find(item => item.id === id);
+                    
+                    if (item.quantity > 1) {
+                        item.quantity -= 1;
+                    } else {
+                        cart = cart.filter(item => item.id !== id);
                     }
-
+                    
                     updateCart();
                     localStorage.setItem('cart', JSON.stringify(cart));
                 });
             });
-
+            
             document.querySelectorAll('.plus').forEach(button => {
                 button.addEventListener('click', () => {
                     const id = button.getAttribute('data-id');
-                    const notes = button.getAttribute('data-notes');
-                    const item = cart.find(item => item.id === id && item.notes === notes);
-                    if (item) {
-                        item.quantity += 1;
-                    }
+                    const item = cart.find(item => item.id === id);
+                    item.quantity += 1;
                     updateCart();
                     localStorage.setItem('cart', JSON.stringify(cart));
                 });
             });
-
+            
             document.querySelectorAll('.remove-item').forEach(button => {
                 button.addEventListener('click', () => {
                     const id = button.getAttribute('data-id');
-                    const notes = button.getAttribute('data-notes');
-                    cart = cart.filter(item => !(item.id === id && item.notes === notes));
+                    cart = cart.filter(item => item.id !== id);
                     updateCart();
                     localStorage.setItem('cart', JSON.stringify(cart));
                 });
             });
         }
-
+        
         // إشعار عند إضافة عنصر للسلة
         function showCartNotification(itemName) {
             const notification = document.createElement('div');
-            notification.className = 'notification fade-in success'; // أضفت كلاس "success"
+            notification.className = 'notification fade-in';
             notification.innerHTML = `
                 <i class="fas fa-check-circle"></i>
                 <span>تمت إضافة ${itemName} إلى السلة</span>
             `;
-
+            
             document.body.appendChild(notification);
-
+            
             setTimeout(() => {
                 notification.style.animation = 'fadeOut 0.5s forwards';
                 setTimeout(() => {
@@ -1466,87 +1018,54 @@
                 }, 500);
             }, 3000);
         }
-
+        
         // تأكيد الطلب
         checkoutButton.addEventListener('click', () => {
             if (cart.length === 0) {
                 showNotification('السلة فارغة! الرجاء إضافة بعض العناصر أولاً.', 'error');
                 return;
             }
-
-            // عرض ملخص الطلب في المودال
-            const orderSummaryList = document.getElementById('order-summary-list');
-            orderSummaryList.innerHTML = '';
-            let orderSubtotal = 0;
-            cart.forEach(item => {
-                const listItem = document.createElement('li');
-                const itemTotal = item.price * item.quantity;
-                orderSubtotal += itemTotal;
-                listItem.innerHTML = `
-                    <strong>${item.name}</strong> 
-                    <span>${item.quantity} x ${item.price.toFixed(2)} د.ع = ${itemTotal.toFixed(2)} د.ع</span>
-                `;
-                if (item.notes) {
-                    listItem.innerHTML += `<br><small>ملاحظات: ${item.notes}</small>`;
-                }
-                orderSummaryList.appendChild(listItem);
-            });
-
-            const deliveryFee = DELIVERY_FEE; // رسوم التوصيل
-            const finalTotal = orderSubtotal + deliveryFee;
-
-            const subtotalRow = document.createElement('li');
-            subtotalRow.innerHTML = `<strong>المجموع الفرعي:</strong> <span>${orderSubtotal.toFixed(2)} د.ع</span>`;
-            orderSummaryList.appendChild(subtotalRow);
-
-            const deliveryFeeRow = document.createElement('li');
-            deliveryFeeRow.innerHTML = `<strong>رسوم التوصيل:</strong> <span>${deliveryFee.toFixed(2)} د.ع</span>`;
-            orderSummaryList.appendChild(deliveryFeeRow);
-
-            document.getElementById('order-summary-total').textContent = `المجموع الكلي: ${finalTotal.toFixed(2)} د.ع`;
             
-            // إرسال الطلب إلى بوت تلغرام
-            sendOrderToTelegram(finalTotal);
-
-            // عرض مودال تأكيد الطلب
-            orderConfirmationModal.classList.add('active');
+            // هنا يمكنك إضافة كود لإرسال الطلب إلى بوت تلغرام
+            sendOrderToTelegram();
+            
+            // عرض تأكيد الطلب
+            orderConfirmation.style.display = 'block';
             cartSidebar.classList.remove('active');
-
-            // تفريغ السلة بعد التأكيد
+            
+            // تفريغ السلة
             cart = [];
             updateCart();
             localStorage.removeItem('cart');
-
-            // إخفاء التأكيد بعد فترة (يمكن للعميل إغلاقه يدويًا أيضًا)
-            // setTimeout(() => {
-            //     orderConfirmationModal.classList.remove('active');
-            // }, 7000); 
+            
+            // إخفاء تأكيد الطلب بعد 5 ثواني
+            setTimeout(() => {
+                orderConfirmation.style.display = 'none';
+            }, 5000);
         });
-
+        
         // إرسال الطلب إلى تلغرام
-        function sendOrderToTelegram(finalTotal) {
+        function sendOrderToTelegram() {
+            // هذه قيم افتراضية، **يجب استبدالها بمعلومات بوتك ومعرف الدردشة الفعلي**
+            // تذكر أن كشف التوكن مباشرة في الفرونت إند ليس آمنًا على الإطلاق
             const botToken = '7327398119:AAG2PDQ9ucODYI0Yv7c7WcwNBhNOoba6TrA'; // توكن البوت الخاص بك
-            const chatId = '909090929'; // معرف الدردشة الذي تريد إرسال الرسائل إليه
-
+            const chatId = '909090929'; // معرف الدردشة الذي تريد إرسال الرسائل إليه (عادةً معرف مجموعتك أو معرفك الخاص)
+            
+            // بناء رسالة الطلب
             let orderMessage = '🍽️ *طلب جديد من موقع المطعم* 🍽️\n\n';
             orderMessage += '📋 *تفاصيل الطلب:*\n';
-
+            
             if (cart.length === 0) {
-                orderMessage += "لا توجد عناصر في السلة (خطأ في الإرسال).";
+                orderMessage += "لا توجد عناصر في السلة.";
             } else {
                 cart.forEach(item => {
-                    orderMessage += `- ${item.name} (${item.quantity} x ${item.price.toFixed(2)} د.ع) = ${(item.quantity * item.price).toFixed(2)} د.ع\n`;
-                    if (item.notes) {
-                        orderMessage += `  _ملاحظات:_ ${item.notes}\n`;
-                    }
+                    orderMessage += `- ${item.name} (${item.quantity} x ${item.price} د.ع) = ${item.quantity * item.price} د.ع\n`;
                 });
             }
-
-            orderMessage += `\nخدمة التوصيل: ${DELIVERY_FEE.toFixed(2)} د.ع`;
-            orderMessage += `\n💰 *المجموع الكلي: ${finalTotal.toFixed(2)} د.ع*`;
-            orderMessage += `\n\n_يرجى التواصل مع العميل لتأكيد الطلب._`;
-
-
+            
+            orderMessage += `\n💰 *المجموع الكلي: ${cartTotal.toFixed(2)} د.ع*`;
+            
+            // **تفعيل كود الإرسال إلى تلغرام**
             fetch(`https://api.telegram.org/bot${botToken}/sendMessage`, {
                 method: 'POST',
                 headers: {
@@ -1555,14 +1074,14 @@
                 body: JSON.stringify({
                     chat_id: chatId,
                     text: orderMessage,
-                    parse_mode: 'Markdown'
+                    parse_mode: 'Markdown' // لاستخدام التنسيق مثل *نص عريض*
                 })
             })
             .then(response => response.json())
             .then(data => {
                 console.log('تم إرسال الطلب:', data);
                 if (data.ok) {
-                    // showNotification('تم إرسال طلبك إلى إدارة المطعم بنجاح!', 'success'); // الإشعار سيظهر من المودال
+                    showNotification('تم إرسال طلبك إلى إدارة المطعم بنجاح!', 'success');
                 } else {
                     console.error('خطأ من تلغرام:', data.description);
                     showNotification(`خطأ في إرسال الطلب: ${data.description}`, 'error');
@@ -1573,7 +1092,7 @@
                 showNotification('حدث خطأ أثناء إرسال الطلب، يرجى المحاولة لاحقاً', 'error');
             });
         }
-
+        
         // تأكيد الحجز (إرسال إلى تلغرام أيضاً)
         bookingForm.addEventListener('submit', (e) => {
             e.preventDefault();
@@ -1584,33 +1103,22 @@
                 date: document.getElementById('date').value,
                 time: document.getElementById('time').value,
                 guests: document.getElementById('guests').value,
-                notes: document.getElementById('notes').value.trim()
+                notes: document.getElementById('notes').value
             };
             
             console.log('تفاصيل الحجز:', formData);
             
-            // عرض ملخص الحجز في المودال
-            const reservationSummaryList = document.getElementById('reservation-summary-list');
-            reservationSummaryList.innerHTML = `
-                <li><strong>الاسم:</strong> <span>${formData.name}</span></li>
-                <li><strong>رقم الهاتف:</strong> <span>${formData.phone}</span></li>
-                <li><strong>تاريخ الحجز:</strong> <span>${formData.date}</span></li>
-                <li><strong>وقت الحجز:</strong> <span>${formData.time}</span></li>
-                <li><strong>عدد الأشخاص:</strong> <span>${formData.guests}</span></li>
-                ${formData.notes ? `<li><strong>ملاحظات:</strong> <span>${formData.notes}</span></li>` : ''}
-            `;
-
-            // إرسال الحجز إلى تلغرام
+            // **إرسال الحجز إلى تلغرام**
             sendBookingToTelegram(formData);
             
-            // عرض مودال تأكيد الحجز
-            reservationConfirmationModal.classList.add('active');
-            bookingForm.reset(); // مسح الفورم بعد الإرسال
+            // عرض تأكيد الحجز
+            reservationConfirmation.style.display = 'block';
+            bookingForm.reset();
             
-            // إخفاء التأكيد بعد فترة (يمكن للعميل إغلاقه يدويًا أيضًا)
-            // setTimeout(() => {
-            //     reservationConfirmationModal.classList.remove('active');
-            // }, 7000);
+            // إخفاء تأكيد الحجز بعد 5 ثواني
+            setTimeout(() => {
+                reservationConfirmation.style.display = 'none';
+            }, 5000);
         });
 
         // إرسال الحجز إلى تلغرام
@@ -1627,8 +1135,6 @@
             if (bookingData.notes) {
                 bookingMessage += `📝 *ملاحظات:* ${bookingData.notes}\n`;
             }
-            bookingMessage += `\n_يرجى التواصل مع العميل لتأكيد الحجز._`;
-
 
             fetch(`https://api.telegram.org/bot${botToken}/sendMessage`, {
                 method: 'POST',
@@ -1645,7 +1151,7 @@
             .then(data => {
                 console.log('تم إرسال الحجز:', data);
                 if (data.ok) {
-                    // showNotification('تم إرسال تفاصيل حجزك إلى إدارة المطعم!', 'success'); // الإشعار سيظهر من المودال
+                    showNotification('تم إرسال تفاصيل حجزك إلى إدارة المطعم!', 'success');
                 } else {
                     console.error('خطأ من تلغرام عند إرسال الحجز:', data.description);
                     showNotification(`خطأ في إرسال الحجز: ${data.description}`, 'error');
@@ -1674,10 +1180,10 @@
             });
         });
         
-        // عرض الإشعارات (تنبيهات قصيرة)
+        // عرض الإشعارات
         function showNotification(message, type = 'success') {
             const notification = document.createElement('div');
-            notification.className = `notification fade-in ${type}`;
+            notification.className = `notification ${type}`;
             notification.innerHTML = `
                 <i class="fas ${type === 'success' ? 'fa-check-circle' : 'fa-exclamation-circle'}"></i>
                 <span>${message}</span>
